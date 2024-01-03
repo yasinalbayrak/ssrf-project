@@ -1,26 +1,10 @@
 import logging
-from datetime import timedelta
-
-import feedparser
-import requests
-from django.conf import settings
-from django.shortcuts import render
-from django.utils import timezone
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import permission_classes, api_view, authentication_classes
 from rest_framework.response import Response
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.tokens import RefreshToken
-from datetime import timedelta
-from django.utils import timezone
-from django.http import JsonResponse
-
 from django.shortcuts import render, redirect
-
 from russianNews.models import User
 from django.contrib import messages
-
 from django.contrib.auth import authenticate as auth_authenticate, login
 
 logger = logging.getLogger(__name__)
@@ -49,19 +33,13 @@ def register(request):
             )
             new_user.save()
 
-            return render(request, "news_list.html")
+            return redirect("login")
 
         except Exception as e:
             logger.error(f"Error in user creation: {e}")
             messages.error(request, 'An error occurred during registration')
 
     return render(request, 'register.html')
-
-
-@api_view(['GET'])
-@authentication_classes([JWTAuthentication])
-def success(request):
-    return render(request, 'success.html')
 
 
 def login_view(request):
@@ -76,10 +54,8 @@ def login_view(request):
             login(request, user)
             messages.success(request, "Login successful")
             # Redirect based on role
-            if role == 'admin':
-                return redirect('success')
-            else:
-                return redirect('success')
+
+            return render(request, "news_list.html")
         else:
             messages.error(request, "Invalid credentials or role")
 

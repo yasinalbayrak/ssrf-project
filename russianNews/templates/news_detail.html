@@ -1,0 +1,142 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans 'News Detail' %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .news-content, .comments-section {
+            margin-top: 20px;
+        }
+
+        .comment {
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .comment:first-child {
+            border-top: none;
+        }
+
+        .comment-author {
+            font-weight: bold;
+        }
+
+        .comment-content {
+            margin-top: 5px;
+        }
+
+        .comment-date {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #0275d8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #025aa5;
+        }
+
+        .delete-button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'news_list' %}" style="background-color: #0275d8; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            <- {% trans 'All News' %}
+        </a>
+    </div>
+
+    <h1>
+        {% if request.LANGUAGE_CODE == "en" %}
+            {{ news_item.title_en }}
+        {% else %}
+            {{ news_item.title_ru }}
+        {% endif %}
+    </h1>
+    <div class="news-content">
+        <p>
+            {% if request.LANGUAGE_CODE == "en" %}
+                {{ news_item.description_en }}
+            {% else %}
+                {{ news_item.description_ru }}
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="comments-section">
+        <h2>{% trans 'Comments' %}</h2>
+        {% for comment in news_item.comments.all %}
+            <div class="comment">
+                <span class="comment-author">{{ comment.author.username }}</span>
+                <span class="comment-date">{{ comment.created_at|date:"d.m.Y H:i" }}</span>
+                <p class="comment-content">{{ comment.content }}</p>
+
+                {% if request.user == comment.author or request.user.is_staff %}
+                    <form action="{% url 'delete_comment' comment.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">{% trans 'Delete' %}</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>{% trans 'No comments yet.' %}</p>
+        {% endfor %}
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="content" placeholder="{% trans 'Add a comment...' %}"></textarea>
+        <button type="submit">{% trans 'Post Comment' %}</button>
+
+    </form>
+</div>
+</body>
+</html>

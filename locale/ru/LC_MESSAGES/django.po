@@ -55,3 +55,41 @@ msgstr "Нет доступных новостей"
 
 msgid "Published on"
 msgstr "Опубликован в"
+
+msgid "Manage Users"
+msgstr "Управление пользователями"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "First Name"
+msgstr "Имя"
+
+msgid "Last Name"
+msgstr "Фамилия"
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "News Detail"
+msgstr "Подробности новостей"
+
+msgid "No comments yet."
+msgstr "Комментариев пока нет."
+
+msgid "Add a comment..."
+msgstr "Добавить комментарий..."
+
+msgid "Comments"
+msgstr "Комментарии"
+
+msgid "Post Comment"
+msgstr "Оставить комментарий"
+
+msgid "All News"
+msgstr "Все новости"
+
+

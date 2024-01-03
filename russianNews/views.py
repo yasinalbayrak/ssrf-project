@@ -1,29 +1,31 @@
 import logging
 
 import feedparser
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from django import forms
 
+from .forms import CommentForm
+from .models import Comment
 from russianNews.models import NewsItem, LastFetch
 from django.utils.dateparse import parse_datetime
 import requests
-
+from russianNews.models import User
 import xml.etree.ElementTree as Et
 from dateutil import parser
 from googletrans import Translator
-
 logging.basicConfig(filename='feed_log.txt', level=logging.INFO)
-
 
 
 def news_list(request):
     """
     View to display a list of news items.
     """
-
     # fetch_news()
     search_query = request.GET.get('search', '')  # Get the search query from the URL query parameter
 
@@ -39,14 +41,6 @@ def news_list(request):
         news_items = NewsItem.objects.all().order_by('-pub_date')
 
     return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
-
-
-def news_detail(request, news_id):
-    """
-    View to display a detailed news item.
-    """
-    news_item = NewsItem.objects.get(id=news_id)
-    return render(request, 'news_list.html', {'news_item': news_item})
 
 
 from django.utils.dateparse import parse_datetime
@@ -128,3 +122,55 @@ def extract_items_and_lbd(xml_data):
         news_items.append(news_item)
 
     return lastBuildDate, news_items
+
+
+@login_required
+def news_detail(request, pk):
+    news_item = get_object_or_404(NewsItem, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.news_item = news_item
+            comment.author = request.user
+            comment.save()
+            return redirect('news_detail', pk=news_item.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'news_detail.html', {'news_item': news_item, 'form': form})
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    # Check if the user is authorized to delete the comment
+    if request.user == comment.author or request.user.is_staff:
+        comment.delete()
+        messages.success(request, "Comment deleted successfully.")
+        return redirect('news_detail', pk=comment.news_item.id)
+    else:
+        # Handle unauthorized attempts
+        messages.error(request, "You do not have permission to delete this comment.")
+        return redirect('news_detail', pk=comment.news_item.id)
+
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def manage_users(request):
+    users = User.objects.all()
+
+    if request.method == "POST" and 'delete_user' in request.POST:
+        user_id = request.POST.get('delete_user')
+        user_to_delete = User.objects.get(id=user_id)
+
+        if user_to_delete.role == "user":
+            user_to_delete.delete()
+            # Optionally, add a success message
+        else:
+            pass
+            # Not authorized
+
+        return redirect('manage_users')
+
+    return render(request, 'manage_users.html', {'users': users})

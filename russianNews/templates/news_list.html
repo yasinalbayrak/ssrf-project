@@ -91,8 +91,7 @@
         {% for news in news_items %}
             <div class="news-item">
                 <h2>
-                    <a href="{{ news.link }}" target="_blank">
-
+                    <a href="{% url 'news_detail' pk=news.pk %}">
                         {% if request.LANGUAGE_CODE == "en" %}
                             {{ news.title_en }}
                         {% else %}
@@ -106,7 +105,7 @@
                         {{ news.description_ru }}
                     {% endif %}
                 </p>
-                <span class="date">{% trans 'Published on' %}: {{ news.pub_date|date:"d M Y H:i" }}</span>
+                <span class="date">{% trans 'Published on' %}: {{ news.pub_date|date:"d.m.Y H:i" }}</span>
                 <span class="category">
                 {% if request.LANGUAGE_CODE == "en" %}
                     {{ news.category_en }}

@@ -53,3 +53,36 @@ msgstr "No news available"
 
 msgid "Published on"
 msgstr "Published on"
+
+msgid "Manage Users"
+msgstr "Manage Users"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "First Name"
+msgstr "First Name"
+
+msgid "Last Name"
+msgstr "Last Name"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "News Detail"
+msgstr "News Detail"
+
+msgid "No comments yet."
+msgstr "No comments yet."
+
+msgid "Add a comment..."
+msgstr "Add a comment..."
+
+msgid "Comments"
+msgstr "Comments"
+
+msgid "Post Comment"
+msgstr "Post Comment"

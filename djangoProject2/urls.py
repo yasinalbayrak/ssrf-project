@@ -21,7 +21,6 @@ from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 
 from auth_user.serializers import CustomTokenRefreshSerializer, CustomTokenObtainPairSerializer
 from auth_user.views import register, CustomAuthToken
-from auth_user.views import success
 from auth_user.views import login_view
 from auth_user.views import home_view
 from django.urls import include, path
@@ -32,17 +31,19 @@ from russianNews import views
 urlpatterns = [
     #    path('admin/', admin.site.urls),
     path('', home_view, name='home'),
-    path('success/', success, name='success'),
     path('register/', register, name='register'),
     path('login/', login_view, name='login'),
 
+
     path('news/', views.news_list, name='news_list'),
-    path('news/<int:news_id>/', views.news_detail, name='news_detail'),
+
+    path('news/<int:pk>/', views.news_detail, name='news_detail'),
     path('token/create', TokenObtainPairView.as_view(),
          name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(),
-         name='token_refresh'),
+name='token_refresh'),
     path("token/verify", TokenVerifyView.as_view(), name="token_verify"),
-
+    path('delete-comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
+    path('manage-users/', views.manage_users, name='manage_users'),
     path('i18n/', include('django.conf.urls.i18n'))
 ]

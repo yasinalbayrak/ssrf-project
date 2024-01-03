@@ -1,0 +1,81 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans 'Manage Users' %} </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0275d8;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        button:hover {
+            background-color: #c9302c;
+        }
+        .form-delete {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>{% trans 'Manage Users' %} </h1>
+
+    <table>
+        <tr>
+            <th>{% trans 'Username' %} </th>
+            <th>{% trans 'First Name' %}</th>
+            <th>{% trans 'Last Name' %}</th>
+            <th>{% trans 'Role' %}</th>
+            <th></th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                {% if user.role == "user" %}
+                    <form method="post" class="form-delete">
+                        {% csrf_token %}
+                        <button type="submit" name="delete_user" value="{{ user.id }}">{% trans 'Delete' %}</button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
