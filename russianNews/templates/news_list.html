@@ -1,0 +1,125 @@
+{% load i18n %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Latest News" %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-list {
+            margin-top: 20px;
+        }
+
+        .news-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .news-item h2 a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+
+        .news-item p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .news-item .date {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .news-item .category {
+            font-size: 0.9em;
+            color: #555;
+            background-color: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="language-selector">
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <select name="language" onchange="this.form.submit()">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
+                        {{ lang.1 }} {% if lang.0 == "en" %}🇬🇧{% elif lang.0 == "ru" %}🇷🇺{% endif %}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+
+    </div>
+    <h1>{% trans "Latest News" %}</h1>
+    <form id="search-form" action="{% url 'news_list' %}" method="get">
+        <input type="text" id="search-input" name="search" placeholder="{% trans 'Search news' %}..." value="{{ search_query }}">
+        <button type="submit">{% trans 'Search' %}</button>
+    </form>
+    <div class="news-list">
+        {% for news in news_items %}
+            <div class="news-item">
+                <h2>
+                    <a href="{{ news.link }}" target="_blank">
+
+                        {% if request.LANGUAGE_CODE == "en" %}
+                            {{ news.title_en }}
+                        {% else %}
+                            {{ news.title_ru }}
+                        {% endif %}
+                    </a></h2>
+                <p>
+                    {% if request.LANGUAGE_CODE == "en" %}
+                        {{ news.description_en }}
+                    {% else %}
+                        {{ news.description_ru }}
+                    {% endif %}
+                </p>
+                <span class="date">{% trans 'Published on' %}: {{ news.pub_date|date:"d M Y H:i" }}</span>
+                <span class="category">
+                {% if request.LANGUAGE_CODE == "en" %}
+                    {{ news.category_en }}
+                {% else %}
+                    {{ news.category_ru }}
+                {% endif %}
+            </span>
+            </div>
+        {% empty %}
+            <p> {% trans 'No news available' %}.</p>
+        {% endfor %}
+    </div>
+
+</div>
+</body>
+</html>

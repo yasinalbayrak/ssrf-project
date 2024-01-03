@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 15:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Welcome"
+msgstr "Welcome"
+
+msgid "Welcome to Our Site!"
+msgstr "Welcome to Our Site!"
+
+msgid "This is the home page of our application. You can:"
+msgstr "This is the home page of our application. You can:"
+
+msgid "Register"
+msgstr "Register"
+
+msgid "for a new account"
+msgstr "for a new account"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "to your existing account"
+msgstr "to your existing account"
+
+msgid "Latest News"
+msgstr "Latest News"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Search news"
+msgstr "Search news"
+
+msgid "No news available"
+msgstr "No news available"
+
+msgid "Published on"
+msgstr "Published on"

@@ -1,0 +1,33 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% trans "Welcome" %}</title>
+    <!-- Add your styles or links to stylesheets here -->
+</head>
+<body>
+    <div class="language-selector">
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <select name="language" onchange="this.form.submit()">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected {% endif %}>
+                        {{ lang.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    <div class="container">
+        <h1>{% trans "Welcome to Our Site!" %}</h1>
+        <p>{% trans "This is the home page of our application. You can:" %}</p>
+        <ul>
+            <li><a href="{% url 'register' %}">{% trans "Register" %}</a> {% trans "for a new account" %}</li>
+            <li><a href="{% url 'login' %}">{% trans "Login" %}</a> {% trans "to your existing account" %}</li>
+        </ul>
+    </div>
+</body>
+</html>
