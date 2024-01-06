@@ -92,4 +92,38 @@ msgstr "Оставить комментарий"
 msgid "All News"
 msgstr "Все новости"
 
+msgid "Login"
+msgstr "Авторизоваться"
 
+msgid "Username"
+msgstr "имя пользователя"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Don't have an account?"
+msgstr "У вас нет учетной записи?"
+
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+msgid "Sign in"
+msgstr "Войти"
+
+msgid "Register"
+msgstr "регистр"
+
+msgid "First Name"
+msgstr "Имя"
+
+msgid "Last Name"
+msgstr "Фамилия"
+
+msgid "Already have an account"
+msgstr "У вас уже есть аккаунт"
+
+msgid "User Registration"
+msgstr "Регистрация пользователя"

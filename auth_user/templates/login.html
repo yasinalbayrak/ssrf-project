@@ -1,7 +1,8 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>{% trans "Login" %}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -75,7 +76,7 @@
 </head>
 <body>
 <div class="form-container">
-    <h2>Login</h2>
+    <h2>{% trans "Login" %}</h2>
 
     {% if messages %}
         {% for message in messages %}
@@ -88,23 +89,23 @@
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label for="id_username">Username:</label>
+            <label for="id_username">{% trans "Username" %}:</label>
             <input type="text" id="id_username" name="username" required>
         </div>
         <div class="form-group">
-            <label for="id_password">Password:</label>
+            <label for="id_password">{% trans "Password" %}:</label>
             <input type="password" id="id_password" name="password" required>
         </div>
         <div class="form-group">
-            <label for="id_role">Role:</label>
+            <label for="id_role">{% trans "Role" %}:</label>
             <select id="id_role" name="role">
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">{% trans "Login" %}</button>
     </form>
-    <p>Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+    <p>{% trans "Don't have an account?" %} <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 </body>
 </html>
