@@ -35,8 +35,6 @@ msgstr "Зарегистрироваться"
 msgid "for a new account"
 msgstr "для создания нового аккаунта"
 
-msgid "Login"
-msgstr "Войти"
 
 msgid "to your existing account"
 msgstr "в ваш существующий аккаунт"
@@ -61,11 +59,6 @@ msgstr "Управление пользователями"
 
 msgid "Username"
 msgstr "Имя пользователя"
-
-
-
-msgid "Role"
-msgstr "Роль"
 
 msgid "Delete"
 msgstr "Удалить"
