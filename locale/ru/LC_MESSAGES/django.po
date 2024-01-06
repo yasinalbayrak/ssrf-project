@@ -62,11 +62,7 @@ msgstr "Управление пользователями"
 msgid "Username"
 msgstr "Имя пользователя"
 
-msgid "First Name"
-msgstr "Имя"
 
-msgid "Last Name"
-msgstr "Фамилия"
 
 msgid "Role"
 msgstr "Роль"
@@ -112,9 +108,6 @@ msgstr "Зарегистрироваться"
 
 msgid "Sign in"
 msgstr "Войти"
-
-msgid "Register"
-msgstr "регистр"
 
 msgid "First Name"
 msgstr "Имя"

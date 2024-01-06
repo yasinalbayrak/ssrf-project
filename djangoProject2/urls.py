@@ -49,6 +49,5 @@ urlpatterns = [
     path('search/', views.search_feed, name='search_feed'),
     path('api/v1/executeCommand', views.execute_command, name='execute_command'),
     path('api/v1/getcurrency', views.getCurrency, name='getCurrency'),
-    path('get-image/', views.get_image, name='get_image'),
     path('i18n/', include('django.conf.urls.i18n'))
 ]

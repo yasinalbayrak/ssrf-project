@@ -89,8 +89,7 @@
 <div class="container">
 
     <div style="margin-bottom: 20px;">
-        <a href="{% url 'news_list' %}"
-           style="background-color: #0275d8; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block;">
+        <a href="{% url 'news_list' %}" style="background-color: #0275d8; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block;">
             <- {% trans 'All News' %}
         </a>
     </div>
@@ -135,18 +134,9 @@
     <form method="post">
         {% csrf_token %}
         <textarea name="content" placeholder="{% trans 'Add a comment...' %}"></textarea>
-
-
         <button type="submit">{% trans 'Post Comment' %}</button>
 
     </form>
-
-    <div style="margin-bottom: 20px;">
-        <a href="{% url 'get_image' %}"
-           style="background-color: #0275d8; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block;">
-            -> {% trans 'Upload an image about this news' %}
-        </a>
-    </div>
 </div>
 </body>
 </html>
