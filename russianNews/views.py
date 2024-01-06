@@ -150,11 +150,14 @@ def news_detail(request, pk):
     news_item = get_object_or_404(NewsItem, pk=pk)
     if request.method == 'POST':
         form = CommentForm(request.POST)
+
         if form.is_valid():
+
             comment = form.save(commit=False)
             comment.news_item = news_item
             comment.author = request.user
             comment.save()
+
             return redirect('news_detail', pk=news_item.pk)
     else:
         form = CommentForm()
@@ -253,3 +256,50 @@ def getCurrency(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+
+def serve_image_from_url(request):
+    image_url = 'https://example.com/path/to/image.jpg'
+    response = requests.get(image_url, stream=True)
+
+    if response.status_code != 200:
+        return HttpResponse('Failed to fetch image', status=404)
+
+    # Get the content type of the image
+    content_type = response.headers['content-type']
+    return HttpResponse(response.content, content_type=content_type)
+
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from .forms import ImageUrlForm
+
+
+def get_image(request):
+    context = {
+        'form': ImageUrlForm(),
+        'image_url': None,
+        'status_message': '',
+        "response": "",
+        'error_message': None,
+        "last_message": ""
+    }
+
+    if request.method == 'POST':
+        form = ImageUrlForm(request.POST)
+        if form.is_valid():
+            image_url = form.cleaned_data['image_url']
+            try:
+                response = requests.get(image_url, stream=True)
+
+                if response.status_code == 200:
+                    context['image_url'] = image_url
+                    context['response'] = response.content
+                    context['last_message'] = "Successfully Uploaded"
+                else:
+                    context['last_message'] = 'Failed to fetch image with status code: {}'.format(response.status_code)
+
+            except Exception as e:
+                context['last_message'] = 'Failed to fetch image {}'.format(str(e))
+
+    return render(request, 'fetch_image.html', context)

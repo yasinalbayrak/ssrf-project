@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch Image</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Fetch Image</button>
+</form>
+{% if last_message %}
+    <p>{{ last_message }}</p>
+{% endif %}
+{% if image_url %}
+    <img src="{{ image_url }}" alt="{{ response }}" style="max-width: 100%;">
+{% elif status_message %}
+    <p>{{ status_message }}</p>
+{% elif error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+
+
+</body>
+</html>
