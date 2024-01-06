@@ -100,7 +100,79 @@
                    value="{{ search_query }}">
             <button type="submit">{% trans 'Search' %}</button>
         </form>
-
+        <form id="currency" action="/api/v1/getcurrency" method="get" target="response-frame">
+            <select id="from" name="from" required>
+                <option value="AUD">AUD - 🇦🇺 Australian Dollar (A$)</option>
+                <option value="BGN">BGN - 🇧🇬 Bulgarian Lev (лв)</option>
+                <option value="BRL">BRL - 🇧🇷 Brazilian Real (R$)</option>
+                <option value="CAD">CAD - 🇨🇦 Canadian Dollar (CA$)</option>
+                <option value="CHF">CHF - 🇨🇭 Swiss Franc (CHF)</option>
+                <option value="CNY">CNY - 🇨🇳 Chinese Yuan (¥)</option>
+                <option value="CZK">CZK - 🇨🇿 Czech Koruna (Kč)</option>
+                <option value="DKK">DKK - 🇩🇰 Danish Krone (kr)</option>
+                <option value="EUR">EUR - 🇪🇺 Euro (€)</option>
+                <option value="GBP">GBP - 🇬🇧 British Pound (£)</option>
+                <option value="HKD">HKD - 🇭🇰 Hong Kong Dollar (HK$)</option>
+                <option value="HRK">HRK - 🇭🇷 Croatian Kuna (kn)</option>
+                <option value="HUF">HUF - 🇭🇺 Hungarian Forint (Ft)</option>
+                <option value="IDR">IDR - 🇮🇩 Indonesian Rupiah (Rp)</option>
+                <option value="ILS">ILS - 🇮🇱 Israeli New Shekel (₪)</option>
+                <option value="INR">INR - 🇮🇳 Indian Rupee (₹)</option>
+                <option value="ISK">ISK - 🇮🇸 Icelandic Króna (kr)</option>
+                <option value="JPY">JPY - 🇯🇵 Japanese Yen (¥)</option>
+                <option value="KRW">KRW - 🇰🇷 South Korean Won (₩)</option>
+                <option value="MXN">MXN - 🇲🇽 Mexican Peso (MX$)</option>
+                <option value="MYR">MYR - 🇲🇾 Malaysian Ringgit (RM)</option>
+                <option value="NOK">NOK - 🇳🇴 Norwegian Krone (kr)</option>
+                <option value="NZD">NZD - 🇳🇿 New Zealand Dollar (NZ$)</option>
+                <option value="PHP">PHP - 🇵🇭 Philippine Peso (₱)</option>
+                <option value="PLN">PLN - 🇵🇱 Polish Złoty (zł)</option>
+                <option value="RON">RON - 🇷🇴 Romanian Leu (lei)</option>
+                <option value="RUB">RUB - 🇷🇺 Russian Ruble (₽)</option>
+                <option value="SEK">SEK - 🇸🇪 Swedish Krona (kr)</option>
+                <option value="SGD">SGD - 🇸🇬 Singapore Dollar (S$)</option>
+                <option value="THB">THB - 🇹🇭 Thai Baht (฿)</option>
+                <option value="TRY">TRY - 🇹🇷 Turkish Lira (₺)</option>
+                <option value="USD">USD - 🇺🇸 United States Dollar ($)</option>
+                <option value="ZAR">ZAR - 🇿🇦 South African Rand (R)</option>
+            </select>
+            <select id="to" name="to" required>
+                <option value="AUD">AUD - 🇦🇺 Australian Dollar (A$)</option>
+                <option value="BGN">BGN - 🇧🇬 Bulgarian Lev (лв)</option>
+                <option value="BRL">BRL - 🇧🇷 Brazilian Real (R$)</option>
+                <option value="CAD">CAD - 🇨🇦 Canadian Dollar (CA$)</option>
+                <option value="CHF">CHF - 🇨🇭 Swiss Franc (CHF)</option>
+                <option value="CNY">CNY - 🇨🇳 Chinese Yuan (¥)</option>
+                <option value="CZK">CZK - 🇨🇿 Czech Koruna (Kč)</option>
+                <option value="DKK">DKK - 🇩🇰 Danish Krone (kr)</option>
+                <option value="EUR">EUR - 🇪🇺 Euro (€)</option>
+                <option value="GBP">GBP - 🇬🇧 British Pound (£)</option>
+                <option value="HKD">HKD - 🇭🇰 Hong Kong Dollar (HK$)</option>
+                <option value="HRK">HRK - 🇭🇷 Croatian Kuna (kn)</option>
+                <option value="HUF">HUF - 🇭🇺 Hungarian Forint (Ft)</option>
+                <option value="IDR">IDR - 🇮🇩 Indonesian Rupiah (Rp)</option>
+                <option value="ILS">ILS - 🇮🇱 Israeli New Shekel (₪)</option>
+                <option value="INR">INR - 🇮🇳 Indian Rupee (₹)</option>
+                <option value="ISK">ISK - 🇮🇸 Icelandic Króna (kr)</option>
+                <option value="JPY">JPY - 🇯🇵 Japanese Yen (¥)</option>
+                <option value="KRW">KRW - 🇰🇷 South Korean Won (₩)</option>
+                <option value="MXN">MXN - 🇲🇽 Mexican Peso (MX$)</option>
+                <option value="MYR">MYR - 🇲🇾 Malaysian Ringgit (RM)</option>
+                <option value="NOK">NOK - 🇳🇴 Norwegian Krone (kr)</option>
+                <option value="NZD">NZD - 🇳🇿 New Zealand Dollar (NZ$)</option>
+                <option value="PHP">PHP - 🇵🇭 Philippine Peso (₱)</option>
+                <option value="PLN">PLN - 🇵🇱 Polish Złoty (zł)</option>
+                <option value="RON">RON - 🇷🇴 Romanian Leu (lei)</option>
+                <option value="RUB">RUB - 🇷🇺 Russian Ruble (₽)</option>
+                <option value="SEK">SEK - 🇸🇪 Swedish Krona (kr)</option>
+                <option value="SGD">SGD - 🇸🇬 Singapore Dollar (S$)</option>
+                <option value="THB">THB - 🇹🇭 Thai Baht (฿)</option>
+                <option value="TRY">TRY - 🇹🇷 Turkish Lira (₺)</option>
+                <option value="USD">USD - 🇺🇸 United States Dollar ($)</option>
+                <option value="ZAR">ZAR - 🇿🇦 South African Rand (R)</option>
+            </select>
+            <button type="convert">{% trans 'Convert' %}</button>
+        </form>
         <!-- New Search Form -->
         <form id="second-search-form" action="/search/" method="get">
             <input type="text" id="feed" name="feed" placeholder="{% trans 'Suggest us a feed' %}...">
