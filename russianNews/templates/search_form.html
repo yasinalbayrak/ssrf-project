@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Feed Search</title>
+</head>
+<body>
+    <h1>News Feed Search</h1>
+    <form action="/search/" method="get">
+        <label for="feed">Enter a news feed to be displayed:</label><br>
+        <input type="text" id="feed" name="feed"><br>
+        <input type="submit" value="Search">
+    </form>
+    <h1>   {{ data }} </h1>
+</body>
+</html>

@@ -1108,3 +1108,519 @@ Not Found: /accounts/login/
 Not Found: /accounts/login/
 /Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 29, in news_list
+    fetch_news()
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 61, in fetch_news
+    title_en = translator.translate(title_ru, src='ru', dest='en').text
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/googletrans/client.py", line 194, in translate
+    data, response = self._translate(text, dest, src)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/googletrans/client.py", line 120, in _translate
+    r = self.client.post(url, params=params, data=data)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 824, in post
+    return self.request(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 600, in request
+    return self.send(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 620, in send
+    response = self.send_handling_redirects(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 647, in send_handling_redirects
+    response = self.send_handling_auth(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 684, in send_handling_auth
+    response = self.send_single_request(request, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 714, in send_single_request
+    ) = transport.request(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/connection_pool.py", line 152, in request
+    response = connection.request(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 78, in request
+    return self.connection.request(method, url, headers, stream, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 118, in request
+    return h2_stream.request(method, url, headers, stream, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 292, in request
+    status_code, headers = self.receive_response(timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 344, in receive_response
+    event = self.connection.wait_for_event(self.stream_id, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 197, in wait_for_event
+    self.receive_events(timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 204, in receive_events
+    data = self.socket.read(self.READ_NUM_BYTES, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_backends/sync.py", line 62, in read
+    return self.sock.recv(n)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_exceptions.py", line 12, in map_exceptions
+    raise to_exc(exc) from None
+httpcore._exceptions.ReadTimeout: The read operation timed out
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 29, in news_list
+    fetch_news()
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 61, in fetch_news
+    title_en = translator.translate(title_ru, src='ru', dest='en').text
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/googletrans/client.py", line 194, in translate
+    data, response = self._translate(text, dest, src)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/googletrans/client.py", line 120, in _translate
+    r = self.client.post(url, params=params, data=data)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 824, in post
+    return self.request(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 600, in request
+    return self.send(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 620, in send
+    response = self.send_handling_redirects(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 647, in send_handling_redirects
+    response = self.send_handling_auth(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 684, in send_handling_auth
+    response = self.send_single_request(request, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpx/_client.py", line 714, in send_single_request
+    ) = transport.request(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/connection_pool.py", line 152, in request
+    response = connection.request(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/connection.py", line 78, in request
+    return self.connection.request(method, url, headers, stream, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 118, in request
+    return h2_stream.request(method, url, headers, stream, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 292, in request
+    status_code, headers = self.receive_response(timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 344, in receive_response
+    event = self.connection.wait_for_event(self.stream_id, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 197, in wait_for_event
+    self.receive_events(timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_sync/http2.py", line 204, in receive_events
+    data = self.socket.read(self.READ_NUM_BYTES, timeout)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_backends/sync.py", line 62, in read
+    return self.sock.recv(n)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/httpcore/_exceptions.py", line 12, in map_exceptions
+    raise to_exc(exc) from None
+httpcore._exceptions.ReadTimeout: The read operation timed out
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 45, in news_list
+    return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'url_news_search' not found. 'url_news_search' is not a valid view function or pattern name.
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 45, in news_list
+    return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'url_news_search' not found. 'url_news_search' is not a valid view function or pattern name.
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 46, in news_list
+    return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'url_news_search' not found. 'url_news_search' is not a valid view function or pattern name.
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 46, in news_list
+    return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'url_news_search' not found. 'url_news_search' is not a valid view function or pattern name.
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 46, in news_list
+    return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'url_news_search' not found. 'url_news_search' is not a valid view function or pattern name.
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /url_news_search
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 199, in url_news_search
+    response = requests.get(url)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/sessions.py", line 486, in prepare_request
+    p.prepare(
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'asda': No scheme supplied. Perhaps you meant https://asda?
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /url_news_search
+Not Found: /url_news_search
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /api/v1/executeCommand
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 46, in news_list
+    return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'your_second_search_url' not found. 'your_second_search_url' is not a valid view function or pattern name.
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

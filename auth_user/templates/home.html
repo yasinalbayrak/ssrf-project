@@ -3,7 +3,61 @@
 <html>
 <head>
     <title>{% trans "Welcome" %}</title>
-    <!-- Add your styles or links to stylesheets here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 50px;
+            border-radius: 5px;
+        }
+
+        .language-selector {
+            text-align: right;
+            padding: 10px;
+            background-color: #0275d8;
+            color: #fff;
+        }
+
+        h1 {
+            color: #0275d8;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #0275d8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="language-selector">
@@ -23,7 +77,6 @@
     </div>
     <div class="container">
         <h1>{% trans "Welcome to Our Site!" %}</h1>
-        <p>{% trans "This is the home page of our application. You can:" %}</p>
         <ul>
             <li><a href="{% url 'register' %}">{% trans "Register" %}</a> {% trans "for a new account" %}</li>
             <li><a href="{% url 'login' %}">{% trans "Login" %}</a> {% trans "to your existing account" %}</li>

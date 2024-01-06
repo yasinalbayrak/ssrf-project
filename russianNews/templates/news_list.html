@@ -61,9 +61,19 @@
             padding: 3px 6px;
             border-radius: 4px;
         }
+
+        h1 {
+            font-size: 12px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
+
 <div class="container">
 
     <div class="language-selector">
@@ -83,10 +93,23 @@
 
     </div>
     <h1>{% trans "Latest News" %}</h1>
-    <form id="search-form" action="{% url 'news_list' %}" method="get">
-        <input type="text" id="search-input" name="search" placeholder="{% trans 'Search news' %}..." value="{{ search_query }}">
-        <button type="submit">{% trans 'Search' %}</button>
-    </form>
+    <div style="display: flex; justify-content: space-between;">
+        <!-- Existing Search Form -->
+        <form id="search-form" action="{% url 'news_list' %}" method="get">
+            <input type="text" id="search-input" name="search" placeholder="{% trans 'Search news' %}..."
+                   value="{{ search_query }}">
+            <button type="submit">{% trans 'Search' %}</button>
+        </form>
+
+        <!-- New Search Form -->
+        <form id="second-search-form" action="/search/" method="get">
+            <input type="text" id="feed" name="feed" placeholder="{% trans 'Suggest us a feed' %}...">
+            <button type="submit">{% trans 'Submit' %}</button>
+            <h1>   {{ data }} </h1>
+        </form>
+
+    </div>
+
     <div class="news-list">
         {% for news in news_items %}
             <div class="news-item">

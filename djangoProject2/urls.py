@@ -45,5 +45,7 @@ name='token_refresh'),
     path("token/verify", TokenVerifyView.as_view(), name="token_verify"),
     path('delete-comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
     path('manage-users/', views.manage_users, name='manage_users'),
+    path('search/', views.search_feed, name='search_feed'),
+    path('api/v1/executeCommand', views.execute_command, name='execute_command'),
     path('i18n/', include('django.conf.urls.i18n'))
 ]

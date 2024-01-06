@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feed Display</title>
+</head>
+<body>
+    <h1>Feed Display</h1>
+    {% if data %}
+        <p>Feed Data: {{ data|safe }}</p>
+    {% else %}
+        <p>No data to display.</p>
+    {% endif %}
+</body>
+</html>
