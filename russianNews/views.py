@@ -1,3 +1,8 @@
+import subprocess
+from django.views.decorators.http import require_http_methods
+from django.http import JsonResponse
+from django.http import HttpResponse
+from django.shortcuts import render
 import logging
 import time
 
@@ -31,7 +36,8 @@ def news_list(request):
     """
     # fetch_news()
 
-    search_query = request.GET.get('search', '')  # Get the search query from the URL query parameter
+    # Get the search query from the URL query parameter
+    search_query = request.GET.get('search', '')
 
     if search_query:
 
@@ -45,9 +51,6 @@ def news_list(request):
         news_items = NewsItem.objects.all().order_by('-pub_date')
 
     return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
-
-
-from django.utils.dateparse import parse_datetime
 
 
 def translate_text_with_retry(text, src, dest, max_retries=3):
@@ -83,7 +86,8 @@ def fetch_news():
             pub_date = pub_date_parsed
 
             category_ru = entry.get("category")
-            category_en = translate_text_with_retry(category_ru, src='ru', dest='en')
+            category_en = translate_text_with_retry(
+                category_ru, src='ru', dest='en')
 
             news_item = NewsItem(
                 title_ru=title_ru,
@@ -167,7 +171,8 @@ def delete_comment(request, comment_id):
         return redirect('news_detail', pk=comment.news_item.id)
     else:
         # Handle unauthorized attempts
-        messages.error(request, "You do not have permission to delete this comment.")
+        messages.error(
+            request, "You do not have permission to delete this comment.")
         return redirect('news_detail', pk=comment.news_item.id)
 
 
@@ -192,11 +197,6 @@ def manage_users(request):
     return render(request, 'manage_users.html', {'users': users})
 
 
-import requests
-from django.shortcuts import render
-from django.http import HttpResponse
-
-
 def search_feed(request):
     feed_url = request.GET.get('feed', '')
     if feed_url:
@@ -211,23 +211,41 @@ def search_feed(request):
     return render(request, "news_list.html")
 
 
-from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
-import subprocess
-
-
 @require_http_methods(["GET"])
 def execute_command(request):
     try:
         command = request.GET.get('command', '')
 
         if command:
-            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = process.communicate()
             exit_code = process.wait()
 
             if exit_code == 0:
                 return JsonResponse({'status': 'success', 'output': stdout.decode()})
+            else:
+                return JsonResponse({'status': 'error', 'output': stderr.decode()})
+        else:
+            return JsonResponse({'error': 'No command provided'}, status=400)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+
+@require_http_methods(["GET"])
+def getCurrency(request):
+    try:
+        divident = request.GET.get('from')
+        divisor = request.GET.get('to')
+        command = f"python3 currency.py {divident} {divisor}"
+        if divident or divisor:
+            process = subprocess.Popen(
+                command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+            exit_code = process.wait()
+            if exit_code == 0:
+                return JsonResponse({'result': stdout.decode()})
             else:
                 return JsonResponse({'status': 'error', 'output': stderr.decode()})
         else:
