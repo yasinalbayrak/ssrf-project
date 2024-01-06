@@ -245,7 +245,7 @@ def getCurrency(request):
             stdout, stderr = process.communicate()
             exit_code = process.wait()
             if exit_code == 0:
-                return JsonResponse({'status': 'success', 'output': stdout.decode()})
+                return JsonResponse({'result': stdout.decode()})
             else:
                 return JsonResponse({'status': 'error', 'output': stderr.decode()})
         else:
