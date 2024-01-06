@@ -91,9 +91,6 @@ msgstr "Все новости"
 msgid "Login"
 msgstr "Авторизоваться"
 
-msgid "Username"
-msgstr "имя пользователя"
-
 msgid "Password"
 msgstr "Пароль"
 
