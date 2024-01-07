@@ -86,7 +86,6 @@ class NewsItem(models.Model):
     pub_date = models.DateTimeField()
 
 
-
 class Comment(models.Model):
     news_item = models.ForeignKey(NewsItem, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -100,3 +99,25 @@ class Comment(models.Model):
 class LastFetch(models.Model):
     last_fetched = models.DateTimeField(default=timezone.now)
 
+
+
+class LogEntry(models.Model):
+    ATTACK_TYPES = [
+        ('PS', 'Port Scan'),
+        ('ID', 'Information Disclosure'),
+        ('RCE', 'Remote Code Execution'),
+        ('OTH', 'Other')
+    ]
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    action = models.CharField(max_length=255, null=True)
+    ip_address = models.GenericIPAddressField(null=True)
+    user_agent = models.TextField(null=True)
+    absolute_uri = models.URLField(null=True)
+    http_method = models.CharField(max_length=10, null=True)
+    input = models.CharField(max_length=255, null=True)
+
+    attackType = models.CharField(max_length=3, choices=ATTACK_TYPES, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.created_at} - {self.user} - {self.action}"

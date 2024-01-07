@@ -1,0 +1,32 @@
+Some action taken
+Some action taken
+Some action taken
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /get-image/
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/forms.py changed, reloading.
+Watching for file changes with StatReloader
+List the news
+List the news
+Currency convert attempt
+Made a comment
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Image upload attempt
+Image upload attempt
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Image upload attempt
+Image upload attempt
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Image upload attempt
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/handlers.py changed, reloading.
+Watching for file changes with StatReloader
+Image upload attempt
+Image upload attempt
+List the news
+List the news

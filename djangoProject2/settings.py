@@ -27,7 +27,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -188,14 +187,18 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'INFO',  # Set the level to INFO
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'feed_log.txt',
         },
+        'db': {
+            'level': 'INFO',
+            'class': 'russianNews.handlers.DatabaseLogHandler',
+        }
     },
     'root': {
-        'handlers': ['file'],
-        'level': 'INFO',  # Set the root logger level to INFO
+        'handlers': ['file', 'db'],
+        'level': 'INFO',
+        'propagate': True,
     },
 }
-

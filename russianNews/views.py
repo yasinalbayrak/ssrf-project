@@ -26,8 +26,9 @@ from russianNews.models import User
 import xml.etree.ElementTree as Et
 from dateutil import parser
 from googletrans import Translator
+import logging
 
-logging.basicConfig(filename='feed_log.txt', level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def news_list(request):
@@ -40,7 +41,15 @@ def news_list(request):
     search_query = request.GET.get('search', '')
 
     if search_query:
+        logger.info('Searched a news', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'OTH'
 
+        })
         news_items = NewsItem.objects.filter(
             Q(title_en__icontains=search_query) |
             Q(title_ru__icontains=search_query) |
@@ -48,6 +57,16 @@ def news_list(request):
             Q(description_ru__icontains=search_query)
         ).order_by('-pub_date')
     else:
+
+        logger.info('List the news', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'OTH'
+
+        })
         news_items = NewsItem.objects.all().order_by('-pub_date')
 
     return render(request, 'news_list.html', {'news_items': news_items, 'search_query': search_query})
@@ -60,7 +79,7 @@ def translate_text_with_retry(text, src, dest, max_retries=3):
             return translator.translate(text, src=src, dest=dest).text
         except ReadTimeout:
             if attempt < max_retries - 1:
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** attempt)
                 continue
             else:
 
@@ -142,6 +161,7 @@ def extract_items_and_lbd(xml_data):
         # Append the news_item to the list
         news_items.append(news_item)
 
+
     return lastBuildDate, news_items
 
 
@@ -149,6 +169,16 @@ def extract_items_and_lbd(xml_data):
 def news_detail(request, pk):
     news_item = get_object_or_404(NewsItem, pk=pk)
     if request.method == 'POST':
+
+        logger.info('Made a comment', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'OTH'
+
+        })
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
@@ -167,10 +197,29 @@ def delete_comment(request, comment_id):
 
     # Check if the user is authorized to delete the comment
     if request.user == comment.author or request.user.is_staff:
+
+        logger.info('Deleted a comment', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'OTH'
+
+        })
         comment.delete()
         return redirect('news_detail', pk=comment.news_item.id)
     else:
-        # Handle unauthorized attempts
+
+        logger.info('Unauthorized comment delete attempt', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'OTH'
+
+        })
         messages.error(
             request, "You do not have permission to delete this comment.")
         return redirect('news_detail', pk=comment.news_item.id)
@@ -186,11 +235,31 @@ def manage_users(request):
         user_to_delete = User.objects.get(id=user_id)
 
         if user_to_delete.role == "user":
+
+            logger.info('User delete action', extra={
+                'user': request.user,
+                'ip_address': request.META.get('REMOTE_ADDR'),
+                'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+                'absolute_uri': request.build_absolute_uri(),
+                'http_method': request.method,
+                'attackType': 'RCE'
+
+            })
             user_to_delete.delete()
 
         else:
+
+            logger.info('Unauthorized user delete action tried.', extra={
+                'user': request.user,
+                'ip_address': request.META.get('REMOTE_ADDR'),
+                'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+                'absolute_uri': request.build_absolute_uri(),
+                'http_method': request.method,
+                'attackType': 'RCE'
+
+            })
             pass
-            # Not authorized
+
 
         return redirect('manage_users')
 
@@ -202,7 +271,7 @@ def search_feed(request):
     if feed_url:
         try:
             response = requests.get(feed_url)
-            # Assuming the feed returns JSON data
+
 
             return render(request, 'news_list.html', {'data': response.text})
         except requests.RequestException as e:
@@ -236,6 +305,16 @@ def execute_command(request):
 @require_http_methods(["GET"])
 def getCurrency(request):
     try:
+
+        logger.info('Currency convert attempt', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'RCE'
+
+        })
         divident = request.GET.get('from')
         divisor = request.GET.get('to')
         command = f"python3 currency.py {divident} {divisor}"
@@ -253,3 +332,49 @@ def getCurrency(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from .forms import ImageUrlForm
+
+
+def get_image(request):
+    context = {
+        'form': ImageUrlForm(),
+        'image_url': None,
+        'status_message': '',
+        "response": "",
+        'error_message': None,
+        "last_message": ""
+    }
+
+    if request.method == 'POST':
+
+        form = ImageUrlForm(request.POST)
+        if form.is_valid():
+            image_url = form.cleaned_data['image_url']
+
+            logger.info('Image upload attempt', extra={
+                'user': request.user,
+                'ip_address': request.META.get('REMOTE_ADDR'),
+                'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+                'absolute_uri': request.build_absolute_uri(),
+                'http_method': request.method,
+                'attackType': 'ID',
+                'input': image_url
+            })
+
+            try:
+                response = requests.get(image_url, stream=True)
+
+                if response.status_code == 200:
+                    context['image_url'] = image_url
+                    context['response'] = response.content
+                    context['last_message'] = "Successfully Uploaded"
+                else:
+                    context['last_message'] = 'Failed to fetch image with status code: {}'.format(response.status_code)
+
+            except Exception as e:
+                context['last_message'] = 'Failed to fetch image {}'.format(str(e))
+
+    return render(request, 'fetch_image.html', context)
