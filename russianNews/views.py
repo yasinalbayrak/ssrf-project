@@ -38,6 +38,8 @@ def news_list(request):
     """
     # fetch_news()
 
+    #fetch_news()
+
     # Get the search query from the URL query parameter
     search_query = request.GET.get('search', '')
 
@@ -147,7 +149,6 @@ def extract_items_and_lbd(xml_data):
         description = item_elem.find('description').text
         pub_date = item_elem.find('pubDate').text
         category = item_elem.find('category').text
-        # Extract other information as needed (e.g., category, enclosure)
 
         # Create a news_item dictionary
         news_item = {
@@ -242,7 +243,7 @@ def manage_users(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'RCE'
+                'attackType': 'OTH'
 
             })
             user_to_delete.delete()
@@ -255,10 +256,11 @@ def manage_users(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'RCE'
+                'attackType': 'OTH'
 
             })
             pass
+
 
         return redirect('manage_users')
 
@@ -274,12 +276,12 @@ def search_feed(request):
             'user_agent': request.META.get('HTTP_USER_AGENT', ''),
             'absolute_uri': request.build_absolute_uri(),
             'http_method': request.method,
-            'attackType': 'PS',
+            'attackType': 'ID',
             'input': feed_url
 
         })
         try:
-            response = requests.get(feed_url)
+            response = requests.get(feed_url) # Vulnerable line to SSRF
             if response.status_code == 200:
 
                 return JsonResponse(response.text, safe=False)
@@ -333,7 +335,7 @@ def getCurrency(request):
         command = f"python3 currency.py {divident} {divisor}"
         if divident or divisor:
             process = subprocess.Popen(
-                command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)  # Vulnerable line to SSRF and Remote Code Execution (Shell Injection)
             stdout, stderr = process.communicate()
             exit_code = process.wait()
             html = f"<html><body><h1>{stdout.decode()}</h1></body></html>"
@@ -370,13 +372,13 @@ def get_image(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'ID',
+                'attackType': 'PS',
                 'input': image_url
             })
 
             try:
-                response = requests.get(image_url, stream=True)
-
+                response = requests.get(image_url, stream=True)  # Vulnerable line to SSRF
+                # No sanitization to user input
                 if response.status_code == 200:
                     context['image_url'] = image_url
                     context['response'] = response.content

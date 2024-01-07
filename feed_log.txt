@@ -148,3 +148,77 @@ List the news
 Feed suggestion submitted.
 Feed suggestion submitted.
 Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 28, in news_list
+    fetch_news()
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 92, in fetch_news
+    desc_en = translate_text_with_retry(desc_ru, src='ru', dest='en')
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 68, in translate_text_with_retry
+    return translator.translate(text, src=src, dest=dest).text
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/googletrans/client.py", line 219, in translate
+    parsed = json.loads(data[0][2])
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not NoneType
+Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 28, in news_list
+    fetch_news()
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 92, in fetch_news
+    desc_en = translate_text_with_retry(desc_ru, src='ru', dest='en')
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 68, in translate_text_with_retry
+    return translator.translate(text, src=src, dest=dest).text
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/googletrans/client.py", line 219, in translate
+    parsed = json.loads(data[0][2])
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not NoneType
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+List the news
+Forbidden (CSRF token from POST incorrect.): /register/
+List the news
+List the news
+List the news
+List the news
+Searched a news
+List the news
+Made a comment
+Deleted a comment
+Made a comment
+Image upload attempt
+Image upload attempt
+Image upload attempt
+Image upload attempt
+List the news
+Feed suggestion submitted.
+Feed suggestion submitted.
+Feed suggestion submitted.
+Forbidden: /search/
+Feed suggestion submitted.
+Not Found: /search/
+Feed suggestion submitted.
+User delete action
+List the news
+Made a comment
+Deleted a comment
+Made a comment
+List the news
+Deleted a comment
+List the news
+List the news
