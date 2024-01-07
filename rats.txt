@@ -1,0 +1,205 @@
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./auth_user/__init__.py
+Total lines analyzed: 1
+Total time 0.000063 seconds
+15873 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./auth_user/serializers.py
+Total lines analyzed: 14
+Total time 0.000088 seconds
+159090 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./auth_user/views.py
+Total lines analyzed: 77
+Total time 0.000140 seconds
+550000 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./djangoProject2/__init__.py
+Total lines analyzed: 1
+Total time 0.000041 seconds
+24390 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./djangoProject2/asgi.py
+Total lines analyzed: 17
+Total time 0.000072 seconds
+236111 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./djangoProject2/wsgi.py
+Total lines analyzed: 17
+Total time 0.000064 seconds
+265625 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./djangoProject2/settings.py
+Total lines analyzed: 205
+Total time 0.000102 seconds
+2009804 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./djangoProject2/urls.py
+Total lines analyzed: 56
+Total time 0.000074 seconds
+756756 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./manage.py
+Total lines analyzed: 23
+Total time 0.000046 seconds
+500000 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/__init__.py
+Total lines analyzed: 1
+Total time 0.000026 seconds
+38461 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/admin.py
+Total lines analyzed: 4
+Total time 0.000029 seconds
+137931 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/apps.py
+Total lines analyzed: 7
+Total time 0.000018 seconds
+388888 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/migrations/0001_initial.py
+Total lines analyzed: 71
+Total time 0.000051 seconds
+1392156 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/migrations/__init__.py
+Total lines analyzed: 1
+Total time 0.000020 seconds
+50000 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/tests.py
+Total lines analyzed: 4
+Total time 0.000012 seconds
+333333 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/forms.py
+Total lines analyzed: 12
+Total time 0.000015 seconds
+800000 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/handlers.py
+./russianNews/handlers.py:15: Medium: non-function call reference: input
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+Total lines analyzed: 18
+Total time 0.000022 seconds
+818181 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/models.py
+./russianNews/models.py:78: Medium: non-function call reference: link
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+./russianNews/models.py:118: Medium: non-function call reference: input
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+Total lines analyzed: 126
+Total time 0.000054 seconds
+2333333 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./russianNews/views.py
+./russianNews/views.py:95: Medium: non-function call reference: link
+./russianNews/views.py:101: Medium: non-function call reference: link
+./russianNews/views.py:114: Medium: non-function call reference: link
+./russianNews/views.py:114: Medium: non-function call reference: link
+./russianNews/views.py:145: Medium: non-function call reference: link
+./russianNews/views.py:154: Medium: non-function call reference: link
+A function call is not being made here, but a reference is being made to a name
+that is normally a vulnerable function.  It could be being assigned as a
+pointer to function.
+
+Total lines analyzed: 398
+Total time 0.000147 seconds
+2707483 lines per second
+Entries in perl database: 33
+Entries in ruby database: 46
+Entries in python database: 62
+Entries in c database: 334
+Entries in php database: 55
+Analyzing ./currency.py
+Total lines analyzed: 23
+Total time 0.000033 seconds
+696969 lines per second
