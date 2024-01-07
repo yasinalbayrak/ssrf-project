@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def register(request):
+
     if request.method == 'POST':
         firstname = request.POST.get('fname')
         lastname = request.POST.get('lname')

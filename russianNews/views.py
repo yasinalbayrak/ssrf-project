@@ -1,9 +1,6 @@
 import subprocess
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
-from django.http import HttpResponse
-from django.shortcuts import render
-import logging
 import time
 
 import feedparser
@@ -12,15 +9,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from requests import ReadTimeout
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from django import forms
 
 from .forms import CommentForm
 from .models import Comment, LogEntry
 from russianNews.models import NewsItem, LastFetch
-from django.utils.dateparse import parse_datetime
 import requests
 from russianNews.models import User
 import xml.etree.ElementTree as Et
@@ -32,12 +24,9 @@ logger = logging.getLogger(__name__)
 
 
 def news_list(request):
-    """
-    View to display a list of news items.
-    """
-    # fetch_news()
 
-    # Get the search query from the URL query parameter
+    fetch_news()
+
     search_query = request.GET.get('search', '')
 
     if search_query:
@@ -146,7 +135,6 @@ def extract_items_and_lbd(xml_data):
         description = item_elem.find('description').text
         pub_date = item_elem.find('pubDate').text
         category = item_elem.find('category').text
-        # Extract other information as needed (e.g., category, enclosure)
 
         # Create a news_item dictionary
         news_item = {
@@ -242,7 +230,7 @@ def manage_users(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'RCE'
+                'attackType': 'OTH'
 
             })
             user_to_delete.delete()
@@ -255,7 +243,7 @@ def manage_users(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'RCE'
+                'attackType': 'OTH'
 
             })
             pass
@@ -275,7 +263,7 @@ def search_feed(request):
             'user_agent': request.META.get('HTTP_USER_AGENT', ''),
             'absolute_uri': request.build_absolute_uri(),
             'http_method': request.method,
-            'attackType': 'PS',
+            'attackType': 'ID',
             'input': feed_url
 
         })
@@ -374,7 +362,7 @@ def get_image(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'ID',
+                'attackType': 'PS',
                 'input': image_url
             })
 
