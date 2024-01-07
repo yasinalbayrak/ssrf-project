@@ -30,3 +30,78 @@ Image upload attempt
 Image upload attempt
 List the news
 List the news
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Feed suggestion submitted.
+Internal Server Error: /search/
+Feed suggestion submitted.
+Internal Server Error: /search/
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Feed suggestion submitted.
+Feed suggestion submitted.
+Internal Server Error: /search/
+List the news
+Feed suggestion submitted.
+Internal Server Error: /search/
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+List the news
+Feed suggestion submitted.
+Internal Server Error: /search/
+Traceback (most recent call last):
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py", line 287, in search_feed
+    response = session.get(feed_url)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/sessions.py", line 747, in send
+    r.content
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/models.py", line 899, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/requests/models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/urllib3/response.py", line 933, in stream
+    while not is_fp_closed(self._fp) or len(self._decoded_buffer) > 0:
+  File "/Users/yasinalbayrak/PycharmProjects/djangoProject2/venv/lib/python3.9/site-packages/urllib3/util/response.py", line 37, in is_fp_closed
+    raise ValueError("Unable to determine whether fp is closed.")
+ValueError: Unable to determine whether fp is closed.
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+Feed suggestion submitted.
+Internal Server Error: /search/
+Feed suggestion submitted.
+Internal Server Error: /search/
+Feed suggestion submitted.
+Internal Server Error: /search/
+Feed suggestion submitted.
+Internal Server Error: /search/
+Feed suggestion submitted.
+Internal Server Error: /search/
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+List the news
+Feed suggestion submitted.
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/djangoProject2/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yasinalbayrak/PycharmProjects/djangoProject2/russianNews/views.py changed, reloading.
+Watching for file changes with StatReloader

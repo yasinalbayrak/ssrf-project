@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Monitoring</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Log Monitoring</h2>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>User</th>
+            <th>Action</th>
+            <th>IP Address</th>
+            <th>User Agent</th>
+            <th>URI</th>
+            <th>HTTP Method</th>
+            <th>Input</th>
+            <th>Attack Type</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.created_at }}</td>
+            <td>{{ log.user }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.ip_address }}</td>
+            <td>{{ log.user_agent }}</td>
+            <td>{{ log.absolute_uri }}</td>
+            <td>{{ log.http_method }}</td>
+            <td>{{ log.input }}</td>
+            <td>{{ log.get_attackType_display }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="9">No logs found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

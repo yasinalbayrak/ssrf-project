@@ -18,7 +18,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django import forms
 
 from .forms import CommentForm
-from .models import Comment
+from .models import Comment, LogEntry
 from russianNews.models import NewsItem, LastFetch
 from django.utils.dateparse import parse_datetime
 import requests
@@ -269,15 +269,29 @@ def manage_users(request):
 def search_feed(request):
     feed_url = request.GET.get('feed', '')
     if feed_url:
+        logger.info('Feed suggestion submitted.', extra={
+            'user': request.user,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
+            'absolute_uri': request.build_absolute_uri(),
+            'http_method': request.method,
+            'attackType': 'PS',
+            'input': feed_url
+
+        })
         try:
             response = requests.get(feed_url)
+            if response.status_code == 200:
 
+                return JsonResponse(response.text, safe=False)
+            else:
 
-            return render(request, 'news_list.html', {'data': response.text})
+                return JsonResponse({'error': 'Failed to fetch data from the feed', 'status_code': response.status_code}, status=response.status_code)
         except requests.RequestException as e:
-            return HttpResponse(f"Error fetching the feed: {e}")
 
-    return render(request, "news_list.html")
+            return JsonResponse({'error': str(e)}, status=500)
+    else:
+        return JsonResponse({'error': 'No feed URL provided'}, status=400)
 
 
 @require_http_methods(["GET"])
@@ -378,3 +392,7 @@ def get_image(request):
                 context['last_message'] = 'Failed to fetch image {}'.format(str(e))
 
     return render(request, 'fetch_image.html', context)
+
+def display_logs(request):
+    logs = LogEntry.objects.exclude(ip_address__isnull=True).order_by('-created_at')
+    return render(request, 'logs_display.html', {'logs': logs})
