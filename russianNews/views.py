@@ -1,6 +1,10 @@
+from .forms import ImageUrlForm
 import subprocess
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
+from django.http import HttpResponse
+from django.shortcuts import render
+import logging
 import time
 
 import feedparser
@@ -9,10 +13,15 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from requests import ReadTimeout
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from django import forms
 
 from .forms import CommentForm
 from .models import Comment, LogEntry
 from russianNews.models import NewsItem, LastFetch
+from django.utils.dateparse import parse_datetime
 import requests
 from russianNews.models import User
 import xml.etree.ElementTree as Et
@@ -24,9 +33,12 @@ logger = logging.getLogger(__name__)
 
 
 def news_list(request):
+    """
+    View to display a list of news items.
+    """
+    # fetch_news()
 
-    fetch_news()
-
+    # Get the search query from the URL query parameter
     search_query = request.GET.get('search', '')
 
     if search_query:
@@ -135,6 +147,7 @@ def extract_items_and_lbd(xml_data):
         description = item_elem.find('description').text
         pub_date = item_elem.find('pubDate').text
         category = item_elem.find('category').text
+        # Extract other information as needed (e.g., category, enclosure)
 
         # Create a news_item dictionary
         news_item = {
@@ -148,7 +161,6 @@ def extract_items_and_lbd(xml_data):
 
         # Append the news_item to the list
         news_items.append(news_item)
-
 
     return lastBuildDate, news_items
 
@@ -230,7 +242,7 @@ def manage_users(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'OTH'
+                'attackType': 'RCE'
 
             })
             user_to_delete.delete()
@@ -243,11 +255,10 @@ def manage_users(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'OTH'
+                'attackType': 'RCE'
 
             })
             pass
-
 
         return redirect('manage_users')
 
@@ -263,7 +274,7 @@ def search_feed(request):
             'user_agent': request.META.get('HTTP_USER_AGENT', ''),
             'absolute_uri': request.build_absolute_uri(),
             'http_method': request.method,
-            'attackType': 'ID',
+            'attackType': 'PS',
             'input': feed_url
 
         })
@@ -325,8 +336,9 @@ def getCurrency(request):
                 command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = process.communicate()
             exit_code = process.wait()
+            html = f"<html><body><h1>{stdout.decode()}</h1></body></html>"
             if exit_code == 0:
-                return JsonResponse({'result': stdout.decode()})
+                return HttpResponse(html)
             else:
                 return JsonResponse({'status': 'error', 'output': stderr.decode()})
         else:
@@ -334,10 +346,6 @@ def getCurrency(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
-
-from django.shortcuts import render
-from django.http import HttpResponse
-from .forms import ImageUrlForm
 
 
 def get_image(request):
@@ -362,7 +370,7 @@ def get_image(request):
                 'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                 'absolute_uri': request.build_absolute_uri(),
                 'http_method': request.method,
-                'attackType': 'PS',
+                'attackType': 'ID',
                 'input': image_url
             })
 
@@ -374,13 +382,17 @@ def get_image(request):
                     context['response'] = response.content
                     context['last_message'] = "Successfully Uploaded"
                 else:
-                    context['last_message'] = 'Failed to fetch image with status code: {}'.format(response.status_code)
+                    context['last_message'] = 'Failed to fetch image with status code: {}'.format(
+                        response.status_code)
 
             except Exception as e:
-                context['last_message'] = 'Failed to fetch image {}'.format(str(e))
+                context['last_message'] = 'Failed to fetch image {}'.format(
+                    str(e))
 
     return render(request, 'fetch_image.html', context)
 
+
 def display_logs(request):
-    logs = LogEntry.objects.exclude(ip_address__isnull=True).order_by('-created_at')
+    logs = LogEntry.objects.exclude(
+        ip_address__isnull=True).order_by('-created_at')
     return render(request, 'logs_display.html', {'logs': logs})

@@ -1,0 +1,166 @@
+{
+    "generated_at": "2024-01-07T12:22:49Z",
+    "vulnerabilities": [
+        {
+            "source": {
+                "label": "request",
+                "line_number": 1,
+                "path": "tmp.py"
+            },
+            "source_trigger_word": "Framework function URL parameter",
+            "sink": {
+                "label": "~call_8 = ret_render(request, 'manage_users.html', 'users'users)",
+                "line_number": 36,
+                "path": "tmp.py"
+            },
+            "sink_trigger_word": "render(",
+            "type": "Vulnerability",
+            "reassignment_nodes": []
+        },
+        {
+            "source": {
+                "label": "~call_1 = ret_request.GET.get('command', '')",
+                "line_number": 69,
+                "path": "tmp.py"
+            },
+            "source_trigger_word": "GET.get(",
+            "sink": {
+                "label": "~call_2 = ret_subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
+                "line_number": 72,
+                "path": "tmp.py"
+            },
+            "sink_trigger_word": "Popen(",
+            "type": "Vulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "command = ~call_1",
+                    "line_number": 69,
+                    "path": "tmp.py"
+                }
+            ]
+        },
+        {
+            "source": {
+                "label": "request",
+                "line_number": 67,
+                "path": "tmp.py"
+            },
+            "source_trigger_word": "Framework function URL parameter",
+            "sink": {
+                "label": "~call_2 = ret_subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
+                "line_number": 72,
+                "path": "tmp.py"
+            },
+            "sink_trigger_word": "Popen(",
+            "type": "UnknownVulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "~call_1 = ret_request.GET.get('command', '')",
+                    "line_number": 69,
+                    "path": "tmp.py"
+                },
+                {
+                    "label": "command = ~call_1",
+                    "line_number": 69,
+                    "path": "tmp.py"
+                }
+            ],
+            "unknown_assignment": {
+                "label": "~call_1 = ret_request.GET.get('command', '')",
+                "line_number": 69,
+                "path": "tmp.py"
+            }
+        },
+        {
+            "source": {
+                "label": "~call_2 = ret_request.GET.get('from')",
+                "line_number": 100,
+                "path": "tmp.py"
+            },
+            "source_trigger_word": "GET.get(",
+            "sink": {
+                "label": "~call_4 = ret_subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
+                "line_number": 104,
+                "path": "tmp.py"
+            },
+            "sink_trigger_word": "Popen(",
+            "type": "Vulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "divident = ~call_2",
+                    "line_number": 100,
+                    "path": "tmp.py"
+                },
+                {
+                    "label": "command = f'python3 currency.py {divident} {divisor}'",
+                    "line_number": 102,
+                    "path": "tmp.py"
+                }
+            ]
+        },
+        {
+            "source": {
+                "label": "~call_3 = ret_request.GET.get('to')",
+                "line_number": 101,
+                "path": "tmp.py"
+            },
+            "source_trigger_word": "GET.get(",
+            "sink": {
+                "label": "~call_4 = ret_subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
+                "line_number": 104,
+                "path": "tmp.py"
+            },
+            "sink_trigger_word": "Popen(",
+            "type": "Vulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "divisor = ~call_3",
+                    "line_number": 101,
+                    "path": "tmp.py"
+                },
+                {
+                    "label": "command = f'python3 currency.py {divident} {divisor}'",
+                    "line_number": 102,
+                    "path": "tmp.py"
+                }
+            ]
+        },
+        {
+            "source": {
+                "label": "request",
+                "line_number": 88,
+                "path": "tmp.py"
+            },
+            "source_trigger_word": "Framework function URL parameter",
+            "sink": {
+                "label": "~call_4 = ret_subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
+                "line_number": 104,
+                "path": "tmp.py"
+            },
+            "sink_trigger_word": "Popen(",
+            "type": "UnknownVulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "~call_2 = ret_request.GET.get('from')",
+                    "line_number": 100,
+                    "path": "tmp.py"
+                },
+                {
+                    "label": "divident = ~call_2",
+                    "line_number": 100,
+                    "path": "tmp.py"
+                },
+                {
+                    "label": "command = f'python3 currency.py {divident} {divisor}'",
+                    "line_number": 102,
+                    "path": "tmp.py"
+                }
+            ],
+            "unknown_assignment": {
+                "label": "~call_2 = ret_request.GET.get('from')",
+                "line_number": 100,
+                "path": "tmp.py"
+            }
+        }
+    ]
+}
